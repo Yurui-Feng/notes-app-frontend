@@ -9,6 +9,7 @@ function CreateArea(props) {
     updateContent((prevNote) => {
       return {
         ...prevNote,
+        // square brackets are used to access the value of a variable
         [name]: value,
       };
     });
