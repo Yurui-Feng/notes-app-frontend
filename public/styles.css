@@ -17,6 +17,9 @@ header {
   margin: auto -16px;
   padding: 16px 32px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+
 }
 
 header h1 {
@@ -26,7 +29,18 @@ header h1 {
   display: flex;
   align-items: center
 }
+header .googleSignIn{
+  display: flex;
+  align-items: center;
+}
+header .googleSignIn button{
+  font-family: "McLaren", cursive;
+  background-color: #F7AF2A;
+}
 
+header .googleSignIn i{
+  margin-right: 0.25rem;
+}
 footer {
   position: absolute;
   text-align: center;
