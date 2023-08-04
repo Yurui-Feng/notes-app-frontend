@@ -45,8 +45,26 @@ function CreateArea(props) {
           <Fab
             onClick={(event) => {
               event.preventDefault();
-              props.onSubmit(newNote);
-              updateContent({ title: "", content: "" });
+
+              // Send a POST request to the server with the new note
+              fetch("http://localhost:3000/notes", {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newNote), // send the new note as JSON
+              })
+                .then((response) => response.json())
+                .then((data) => {
+                  // Add the new note to the state
+                  console.log(data);
+                  props.onSubmit(data);
+                  updateContent({ title: "", content: "" });
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
             }}
           >
             <AddIcon />
