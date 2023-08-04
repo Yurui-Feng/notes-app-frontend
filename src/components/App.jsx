@@ -7,6 +7,23 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [notes, updateNotes] = useState([]);
+  const [isLoggedIn, setLoggedIn] = useState(false); // Add this line
+
+  const handleLogout = () => {
+    // Add this function
+    fetch("http://localhost:3000/logout", {
+      method: "POST",
+      credentials: "include",
+    })
+      .then(() => {
+        setLoggedIn(false);
+        updateNotes([]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     fetch("http://localhost:3000/notes", {
       credentials: "include",
@@ -14,6 +31,22 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         updateNotes(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Check if user is already logged in
+    fetch("http://localhost:3000/isAuthenticated", {
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.isAuthenticated) {
+          setLoggedIn(true);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -29,13 +62,12 @@ function App() {
   function deleteNote(id) {
     fetch(`http://localhost:3000/notes/${id}`, {
       method: "DELETE",
-      credentials: "include", // Include credentials if needed for authentication
+      credentials: "include",
     })
-      .then((response) => response.json())
       .then(() => {
         updateNotes((prevNotes) => {
-          return prevNotes.filter((_, index) => {
-            return index !== id;
+          return prevNotes.filter((note) => {
+            return note._id !== id;
           });
         });
       })
@@ -46,7 +78,7 @@ function App() {
 
   return (
     <div>
-      <Header />
+      <Header isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
       <CreateArea onSubmit={addNote} />
       {notes.map((note) => {
         return (

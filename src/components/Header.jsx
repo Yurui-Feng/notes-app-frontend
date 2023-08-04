@@ -1,7 +1,9 @@
+// header.jsx
 import React from "react";
 import StickyNote2Icon from "@mui/icons-material/StickyNote2";
 
-function Header() {
+function Header({ isLoggedIn, handleLogout }) {
+  // Destructure props here
   const handleLogin = () => {
     window.open("http://localhost:3000/auth/google", "_self");
   };
@@ -13,13 +15,19 @@ function Header() {
         App
       </h1>
       <div className="googleSignIn">
-        <button
-          className="btn btn-block btn-social btn-google"
-          onClick={handleLogin}
-        >
-          <i className="fab fa-google"></i>
-          Sign In
-        </button>
+        {isLoggedIn ? (
+          <button className="btn btn-block btn-logout" onClick={handleLogout}>
+            Log Out
+          </button>
+        ) : (
+          <button
+            className="btn btn-block btn-social btn-google"
+            onClick={handleLogin}
+          >
+            <i className="fab fa-google"></i>
+            Sign In
+          </button>
+        )}
       </div>
     </header>
   );
