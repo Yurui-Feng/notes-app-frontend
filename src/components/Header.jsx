@@ -14,10 +14,10 @@ function Header() {
       </h1>
       <div className="googleSignIn">
         <button
-          class="btn btn-block btn-social btn-google"
+          className="btn btn-block btn-social btn-google"
           onClick={handleLogin}
         >
-          <i class="fab fa-google"></i>
+          <i className="fab fa-google"></i>
           Sign In
         </button>
       </div>

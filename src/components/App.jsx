@@ -3,11 +3,22 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [notes, updateNotes] = useState([]);
-
+  useEffect(() => {
+    fetch("http://localhost:3000/notes", {
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        updateNotes(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
   function addNote(note) {
     updateNotes((prevNotes) => {
       return [...prevNotes, note];
