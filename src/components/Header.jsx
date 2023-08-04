@@ -1,6 +1,7 @@
 // header.jsx
 import React from "react";
 import StickyNote2Icon from "@mui/icons-material/StickyNote2";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 function Header({ isLoggedIn, handleLogout }) {
   // Destructure props here
@@ -17,6 +18,7 @@ function Header({ isLoggedIn, handleLogout }) {
       <div className="googleSignIn">
         {isLoggedIn ? (
           <button className="btn btn-block btn-logout" onClick={handleLogout}>
+            <LogoutIcon className="logoutIcon" />
             Log Out
           </button>
         ) : (
