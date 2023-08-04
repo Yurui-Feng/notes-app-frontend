@@ -58,7 +58,6 @@ function CreateArea(props) {
                 .then((response) => response.json())
                 .then((data) => {
                   // Add the new note to the state
-                  console.log(data);
                   props.onSubmit(data);
                   updateContent({ title: "", content: "" });
                 })
