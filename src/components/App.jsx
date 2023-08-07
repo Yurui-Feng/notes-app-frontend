@@ -11,7 +11,7 @@ function App() {
 
   const handleLogout = () => {
     // Add this function
-    fetch("http://localhost:3000/logout", {
+    fetch("/logout", {
       method: "POST",
       credentials: "include",
     })
@@ -25,7 +25,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:3000/notes", {
+    fetch("/notes", {
       credentials: "include",
     })
       .then((response) => response.json())
@@ -39,7 +39,7 @@ function App() {
 
   useEffect(() => {
     // Check if user is already logged in
-    fetch("http://localhost:3000/isAuthenticated", {
+    fetch("/isAuthenticated", {
       credentials: "include",
     })
       .then((response) => response.json())
@@ -60,7 +60,7 @@ function App() {
   }
 
   function deleteNote(id) {
-    fetch(`http://localhost:3000/notes/${id}`, {
+    fetch(`/notes/${id}`, {
       method: "DELETE",
       credentials: "include",
     })

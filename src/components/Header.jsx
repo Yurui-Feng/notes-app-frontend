@@ -6,7 +6,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 function Header({ isLoggedIn, handleLogout }) {
   // Destructure props here
   const handleLogin = () => {
-    window.open("http://localhost:3000/auth/google", "_self");
+    window.open("/auth/google", "_self");
   };
 
   return (
