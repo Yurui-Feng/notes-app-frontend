@@ -9,7 +9,7 @@ function App() {
   const backendUrl =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : process.env.REACT_APP_BACKEND_URL;
+      : "http://notes-backend-lb-176294790.us-west-2.elb.amazonaws.com";
   const [notes, updateNotes] = useState([]);
   const [isLoggedIn, setLoggedIn] = useState(false); // Add this line
 
