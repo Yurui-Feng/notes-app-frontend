@@ -6,12 +6,16 @@ import CreateArea from "./CreateArea";
 import { useState, useEffect } from "react";
 
 function App() {
+  const backendUrl =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : process.env.BACKEND_URL;
   const [notes, updateNotes] = useState([]);
   const [isLoggedIn, setLoggedIn] = useState(false); // Add this line
 
   const handleLogout = () => {
     // Add this function
-    fetch("/logout", {
+    fetch(backendUrl + "/logout", {
       method: "POST",
       credentials: "include",
     })
@@ -25,7 +29,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetch("/notes", {
+    fetch(backendUrl + "/notes", {
       credentials: "include",
     })
       .then((response) => response.json())
@@ -39,7 +43,7 @@ function App() {
 
   useEffect(() => {
     // Check if user is already logged in
-    fetch("/isAuthenticated", {
+    fetch(backendUrl + "/isAuthenticated", {
       credentials: "include",
     })
       .then((response) => response.json())
@@ -60,7 +64,7 @@ function App() {
   }
 
   function deleteNote(id) {
-    fetch(`/notes/${id}`, {
+    fetch(backendUrl + `/notes/${id}`, {
       method: "DELETE",
       credentials: "include",
     })
@@ -78,8 +82,12 @@ function App() {
 
   return (
     <div>
-      <Header isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-      <CreateArea onSubmit={addNote} />
+      <Header
+        isLoggedIn={isLoggedIn}
+        handleLogout={handleLogout}
+        backendUrl={backendUrl}
+      />
+      <CreateArea onSubmit={addNote} backendUrl={backendUrl} />
       {notes.map((note) => {
         return (
           <Note

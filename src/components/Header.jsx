@@ -3,10 +3,10 @@ import React from "react";
 import StickyNote2Icon from "@mui/icons-material/StickyNote2";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-function Header({ isLoggedIn, handleLogout }) {
+function Header({ isLoggedIn, handleLogout, backendUrl }) {
   // Destructure props here
   const handleLogin = () => {
-    window.open("/auth/google", "_self");
+    window.open(backendUrl + "/auth/google", "_self");
   };
 
   return (

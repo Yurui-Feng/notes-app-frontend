@@ -47,7 +47,7 @@ function CreateArea(props) {
               event.preventDefault();
 
               // Send a POST request to the server with the new note
-              fetch("http://localhost:3000/notes", {
+              fetch(props.backendUrl + "/notes", {
                 method: "POST",
                 credentials: "include",
                 headers: {
