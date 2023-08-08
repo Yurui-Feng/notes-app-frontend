@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# Notes App Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains the frontend code for the Notes App, a web application for creating and managing notes. The frontend is built using React and it interacts with a backend API to manage user authentication and notes storage.
+  You can add a screenshot of your app here
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Google Authentication**: Users can sign in using their Google accounts.
+- **Add, Delete Notes**: Create new notes and remove old ones with a simple user interface.
+- **Modern UI**: Beautifully designed with responsive UI components.
 
-### `npm start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Node.js](https://nodejs.org/) (v18 recommended)
+- [npm](https://npmjs.com/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Local Development
 
-### `npm test`
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/Yurui-Feng/notes-app-frontend.git
+   cd notes-app-frontend
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
 
-### `npm run build`
+3. Start the development server:
+   ```sh
+   npm start
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Visit `http://localhost:3000` in your browser.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Docker Deployment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The project comes with a Dockerfile that bundles the app with Nginx for production deployment.
 
-### `npm run eject`
+1. Build the Docker image:
+   ```sh
+   docker build -t notes-app-frontend .
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Run the Docker container:
+   ```sh
+   docker run -p 80:80 notes-app-frontend
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Now, the app should be accessible at `http://localhost`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Main Components
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Header Component
 
-## Learn More
+The header component displays the application title and provides options for users to either login using Google authentication or logout from the application.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```jsx
+<Header isLoggedIn={isLoggedIn} handleLogout={handleLogout} backendUrl={backendUrl} />
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Live Demo
 
-### Code Splitting
+Visit the live demo of the app at: [https://notesapp.fuyuri.com/](https://notesapp.fuyuri.com/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Backend Repository
 
-### Analyzing the Bundle Size
+For the backend code and API details, check out the backend repository: [notes-app-backend](https://github.com/Yurui-Feng/notes-app-backend)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contributing
 
-### Making a Progressive Web App
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Remember to add a screenshot of your app to the repository and reference it in the README (`screenshot.png` in the example above). This will give visitors an immediate visual understanding of what your app looks like.
