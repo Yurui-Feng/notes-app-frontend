@@ -1,4 +1,21 @@
-# Notes App Frontend
+# Notes App: Your Personal Note-Taking Solution
+
+Introducing Notes App, a modern, full-stack note-taking web application that seamlessly integrates a React frontend with a robust backend API. It has been specifically designed to offer an intuitive, responsive user experience combined with a secure, high-performance back-end.
+
+**Features:**
+
+- **Frontend**: Built using the React.js framework, the user interface is both dynamic and interactive. It leverages components like StickyNote2Icon from the MUI library for visually pleasing elements and supports Google authentication for secure sign-ins.
+
+- **Backend**: Developed to handle the core functionality of note storage, retrieval, and user authentication. It integrates seamlessly with the frontend, ensuring efficient data processing and transfer.
+  - Repository: [https://github.com/Yurui-Feng/notes-app-backend](https://github.com/Yurui-Feng/notes-app-backend)
+
+- **Deployment**: The application utilizes a multi-stage Docker build process for optimized deployment. With the combination of Node.js and NGINX, it ensures that the application is both lightweight and performant.
+
+**Docker Deployment Highlights**:
+- Uses the Node 18-alpine image for a lightweight and efficient build.
+- Employs NGINX via the stable-alpine image, offering high performance and stability for serving the application.
+
+## Notes App Frontend
 
 This repository contains the frontend code for the Notes App, a web application for creating and managing notes. The frontend is built using React and it interacts with a backend API to manage user authentication and notes storage.
   You can add a screenshot of your app here
